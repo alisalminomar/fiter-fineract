@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 #
-FROM azul/zulu-openjdk:20 AS builder
+FROM azul/zulu-openjdk:22 AS builder
 
 RUN apt-get update -qq && apt-get install -y wget
 
@@ -36,7 +36,7 @@ WORKDIR /app/libs
 RUN wget -q https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.23/mysql-connector-java-8.0.23.jar
 # =========================================
 
-FROM azul/zulu-openjdk:20 as fineract
+FROM azul/zulu-openjdk:22 as fineract
 
 #pentaho copy
 COPY --from=builder /fineract/fineract-provider/pentahoReports/*.properties /root/.mifosx/pentahoReports/
